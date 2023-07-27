@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { Link, Redirect, Route, Switch } from "react-router-dom"
+
+import { MainPage } from "./components/mainPage"
+import { Users } from "./components/users"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>App Layout</h1>
+
+      <Link to="/users">User List Page</Link>
+
+      <Switch>
+        <Route path="/" exact component={MainPage} />
+        <Route path="/users/:userId?" component={Users} />
+        <Redirect to="/" />
+      </Switch>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
